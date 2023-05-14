@@ -40,6 +40,15 @@ jobs:
         arguments: bootJar
         gradle-version: 7.6.1
 
+    - name: Create output directory and store jar
+      run: mkdir staging && cp target/*.jar staging
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: LaserBoxGCodeSender-${{ github.run_attempt }}.jar
+        path: staging
+
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
