@@ -50,3 +50,7 @@ jobs:
         path: staging
         name: ${{ env.ARTIFACT_NAME }}
         #name: github-actions-template-${{github.run_number}}-.jar
+
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "build/libs/*.jar"
