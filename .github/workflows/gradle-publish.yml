@@ -38,6 +38,10 @@ jobs:
         arguments: bootJar
         gradle-version: 7.6.1
 
+    - name: Env
+      run: |
+        env
+
     - name: Create output directory and store jar
       run: mkdir staging && cp build/libs/*.jar staging
 
