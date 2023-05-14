@@ -41,7 +41,7 @@ jobs:
         gradle-version: 7.6.1
 
     - name: Create output directory and store jar
-      run: mkdir staging && cp target/*.jar staging
+      run: mkdir staging && cp build/libs/*.jar staging
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
