@@ -38,8 +38,8 @@ jobs:
         arguments: bootJar
         gradle-version: 7.6.1
 
-    - name: Set env
-      run: echo "ARTIFACT_NAME=$(ls build/libs/*.jar | cut -c 12-256)" >> $GITHUB_ENV
+#    - name: Set env
+#      run: echo "ARTIFACT_NAME=$(ls build/libs/*.jar | cut -c 12-256)" >> $GITHUB_ENV
 
     - name: Create output directory and store jar
       run: mkdir staging && cp build/libs/*.jar staging
@@ -48,9 +48,10 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         path: staging
-        name: ${{ env.ARTIFACT_NAME }}
-        #name: github-actions-template-${{github.run_number}}-.jar
+        #name: ${{ env.ARTIFACT_NAME }}
+        name: github-actions-template-${{github.run_number}}-.jar
 
-    - uses: ncipollo/release-action@v1
+    - uses: rickstaa/action-create-tag@v1
       with:
-        artifacts: "build/libs/*.jar"
+        tag: ${{github.run_number}}
+        message: "Latest release"
