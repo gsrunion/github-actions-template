@@ -11,9 +11,4 @@ class GithubActionsTemplateApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-	@Test
-	void fail() {
-		assertTrue(false);
-	}
 }
