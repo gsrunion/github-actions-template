@@ -28,7 +28,7 @@ jobs:
       run: grep 'version' build.gradle
       
     - name: update version
-      run:  sed -rn 's/(\d).(\d).\d/\1.\2.${{github.run_number}}' build.gradle
+      run:  sed -rn 's/(\d).(\d).\d/\1.\2.${{github.run_number}}/p' build.gradle
       
     - name: read version
       run: grep 'version' build.gradle
