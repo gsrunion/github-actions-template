@@ -29,7 +29,7 @@ jobs:
       
     - name: update version
       
-      run:  sed -rn 's/version = \'(\d).(\d).(\d)\'/\1.\2.${{github.run_number}}/p' build.gradle
+      run:  sed -rn "s/version = (\d).(\d).(\d)/version='\1.\2.${{github.run_number}}'/p" build.gradle
       
     - name: read version
       run: cat build.gradle
