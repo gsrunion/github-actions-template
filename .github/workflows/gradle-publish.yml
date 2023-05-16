@@ -24,7 +24,13 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: version
+    - name: read version
+      run: grep 'version' build.gradle
+      
+    - name: update version
+      run:  sed -rn 's/(\d).(\d).\d/my year:\1.\2.${{github.run_number}}' build.gradle
+      
+    - name: read version
       run: grep 'version' build.gradle
 
     - name: Validate Gradle wrapper
